@@ -1,0 +1,21 @@
+.contenedor-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.input-gruop {
+  max-width: 700px;
+  min-width: 300px;
+}
+
+.contenedor-tarjetas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
