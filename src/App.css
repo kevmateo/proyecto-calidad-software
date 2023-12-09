@@ -1,3 +1,21 @@
+.contenedor-principal {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.contenedor-principal.visible {
+  opacity: 1;
+
+}
+
+.contenido-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .contenedor-titulo {
   display: flex;
   align-items: center;
@@ -12,10 +30,20 @@
 }
 
 .contenedor-tarjetas {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.contenedor-tarjetas.visible {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 20px;
+  max-height: 1000px;
+  /* Un valor máximo suficientemente grande */
+  opacity: 1;
 }

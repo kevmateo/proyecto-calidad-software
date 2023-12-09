@@ -1,0 +1,81 @@
+.loading-page {
+    --tiempo-animacion-invertir: 0.4s;
+    --tiempo-espera-animacion-invertir: 0.8s;
+    --tiempo-animacion-typing: 1.5s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #000;
+    height: 100vh;
+    width: 100vw;
+    animation: invert-bg-color var(--tiempo-animacion-invertir) var(--tiempo-espera-animacion-invertir) forwards, loading-disappear 0.8s 2.0s forwards;
+}
+
+
+.loading-page h2 {
+    color: #fff;
+    max-width: fit-content;
+    overflow: hidden;
+    /* Oculta el exceso de texto */
+    border-right: 0.08em solid white;
+    /* Simula el cursor intermitente */
+    white-space: nowrap;
+    /* Evita que las letras se rompan */
+    margin: 0;
+
+    animation: typing var(--tiempo-animacion-typing) steps(50, end) forwards, blink-caret 0.75s step-end infinite, invert-text-colors var(--tiempo-animacion-invertir) var(--tiempo-espera-animacion-invertir) forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
+@keyframes invert-text-colors {
+    from {
+        color: #fff;
+    }
+
+    to {
+        color: #000;
+    }
+}
+
+@keyframes invert-bg-color {
+    from {
+        background-color: #000;
+    }
+
+    to {
+        background-color: #fff;
+    }
+}
+
+@keyframes loading-disappear {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
