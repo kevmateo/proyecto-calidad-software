@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap');
+
 .contenedor-principal {
+  width: 100vw;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
@@ -14,6 +17,7 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 .contenedor-titulo {
@@ -21,7 +25,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 20px;
+  margin: 20px;
+}
+
+.contenedor-titulo h1 {
+  font-family: 'Pacifico', sans-serif;
+  font-size: calc(2rem + 1vw);
+  text-align: center;
+  margin: 20px;
 }
 
 .input-gruop {
@@ -30,20 +41,32 @@
 }
 
 .contenedor-tarjetas {
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   max-height: 0;
   opacity: 0;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .contenedor-tarjetas.visible {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 20px;
   max-height: 1000px;
-  /* Un valor máximo suficientemente grande */
   opacity: 1;
+}
+
+.contenedor-sin-resultados {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.contenedor-sin-resultados.visible {
+  opacity: 1;
+}
+
+.contenedor-sin-resultados h3 {
+  font-size: calc(0.05rem + 1vw);
+  text-align: center;
+  margin: 20px;
 }

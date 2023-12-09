@@ -12,6 +12,24 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [ultimoResultado, setUltimoResultado] = useState([]);
+  useEffect(() => {
+    if (palabrasAuxiliares.length > 0) {
+      setUltimoResultado(palabrasAuxiliares);
+    }
+  }, [palabrasAuxiliares]);
+
+  useEffect(() => {
+    if (palabrasAuxiliares.length === 0 && ultimoResultado.length > 0) {
+      const timeoutId = setTimeout(() => {
+        setUltimoResultado([]);
+      }, 300);
+
+      return () => clearTimeout(timeoutId);
+    } else if (palabrasAuxiliares.length > 0) {
+      setUltimoResultado(palabrasAuxiliares);
+    }
+  }, [palabrasAuxiliares]);
   /*
   const handlerTraerPalabras = () => {
     fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
@@ -81,7 +99,7 @@ function App() {
       {!isLoading && (
         <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
           <div className='contenedor-titulo'>
-            <h1>Innovatech Solutions</h1>
+            <h1>AsanaQuest</h1>
             <InputGroup className="input-gruop">
               <Form.Control
                 placeholder="Escriba para empezar..."
@@ -93,8 +111,8 @@ function App() {
               />
             </InputGroup>
           </div>
-          <div className={`contenedor-tarjetas ${isSearching ? 'visible' : ''}`}>
-            {palabrasAuxiliares.map((palabra, index) => (
+          <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
+            {ultimoResultado.map((palabra, index) => (
               <TarjetaPalabra
                 key={index}
                 id_palabra={palabra.id_palabra}
@@ -105,6 +123,9 @@ function App() {
                 imagen={palabra.imagen || ""}
               />
             ))}
+          </div>
+          <div className={`contenedor-sin-resultados ${(palabrasAuxiliares.length === 0) ? 'visible' : ''}`}>
+            <h3>No se encontraron resultados</h3>
           </div>
         </div>
       )}
