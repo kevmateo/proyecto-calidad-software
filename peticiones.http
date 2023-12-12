@@ -1,0 +1,2 @@
+###
+GET http://26.137.196.64:8080/diccionary/imagenes HTTP/1.1
