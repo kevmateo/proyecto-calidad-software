@@ -2,7 +2,6 @@
 
 .contenedor-principal {
   opacity: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,19 +57,4 @@
   max-height: 1000px;
   opacity: 1;
   overflow: visible;
-}
-
-.contenedor-sin-resultados {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.contenedor-sin-resultados.visible {
-  opacity: 1;
-}
-
-.contenedor-sin-resultados h3 {
-  font-size: 1rem;
-  text-align: center;
-  margin: 20px;
 }

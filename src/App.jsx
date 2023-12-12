@@ -2,8 +2,8 @@ import './App.css';
 import { Form, InputGroup } from 'react-bootstrap';
 import TarjetaPalabra from './componentes/tarjeta-palabra';
 import LoadingPage from './componentes/loading-page';
-import { useState, useEffect } from 'react';
-import datos_quemados from './datos_quemados.json';
+import { useState, useEffect, Suspense } from 'react';
+
 function App() {
 
   const [palabras, setPalabras] = useState([]);
@@ -31,7 +31,6 @@ function App() {
     }
   }, [palabrasAuxiliares]);
 
-  /*
   const handlerTraerPalabras = () => {
     fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
       method: 'GET',
@@ -55,13 +54,6 @@ function App() {
       .catch((error) => {
         console.log("Error de red: " + error);
       });
-  }
-  */
-
-
-  const handlerTraerPalabras = () => {
-    setPalabras(datos_quemados);
-    setPalabrasAuxiliares(datos_quemados);
   }
 
   useEffect(() => {
@@ -114,6 +106,9 @@ function App() {
                 onFocus={handleInputFocus}
               />
             </InputGroup>
+            <Suspense fallback={<h2>Buscando...</h2>}>
+              
+            </Suspense>
           </div>
           <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
             {ultimoResultado.map((palabra, index) => (
@@ -127,9 +122,6 @@ function App() {
                 imagen={palabra.imagen || ""}
               />
             ))}
-          </div>
-          <div className={`contenedor-sin-resultados ${(palabrasAuxiliares.length === 0) ? 'visible' : ''}`}>
-            <h3>No se encontraron resultados</h3>
           </div>
         </div>
       )}
