@@ -33,9 +33,9 @@
     },
     {
         "id_palabra": 2,
-        "sansckrit": "Tadasana",
-        "spanish": "Postura de la Montaña",
-        "english": "Mountain Pose",
+        "sansckrit": "Kevin Tonto",
+        "spanish": "Kevin Tonto",
+        "english": "Kevin stupid",
         "diccionaryWordModels": [
             {
                 "id_diccionary_word": {
@@ -44,9 +44,9 @@
                 },
                 "word": {
                     "id": 1,
-                    "sans_word": "Asana",
-                    "spanish_w": "postura",
-                    "english_w": "pose"
+                    "sans_word": "Kevin",
+                    "spanish_w": "Kevin",
+                    "english_w": "Kevin"
                 }
             },
             {
@@ -56,9 +56,9 @@
                 },
                 "word": {
                     "id": 25,
-                    "sans_word": "Tad",
-                    "spanish_w": "montaña",
-                    "english_w": "mountain"
+                    "sans_word": "Tonto",
+                    "spanish_w": "Tonto",
+                    "english_w": "Tonto"
                 }
             }
         ]

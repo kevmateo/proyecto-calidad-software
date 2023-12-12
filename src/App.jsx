@@ -30,6 +30,7 @@ function App() {
       setUltimoResultado(palabrasAuxiliares);
     }
   }, [palabrasAuxiliares]);
+
   /*
   const handlerTraerPalabras = () => {
     fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
@@ -56,10 +57,13 @@ function App() {
       });
   }
   */
+
+
   const handlerTraerPalabras = () => {
     setPalabras(datos_quemados);
     setPalabrasAuxiliares(datos_quemados);
   }
+
   useEffect(() => {
     // const imagenesGuardadas = localStorage.getItem("imagen");
     // if (imagenesGuardadas) {
