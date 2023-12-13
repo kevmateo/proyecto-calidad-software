@@ -24,7 +24,7 @@ function NavBar(props) {
       <Container >
         <Navbar.Brand>Calidad de Software</Navbar.Brand>
         <Nav>
-          <Nav.Link href="https://github.com/kevmateo/proyecto-calidad-software">
+          <Nav.Link href="https://github.com/kevmateo/proyecto-calidad-software" target='_blank' rel='noopener noreferrer'>
             <FaGithub size={24} />
           </Nav.Link>
           <Button style={{ background: 'transparent', border: 'none' }} onClick={handlerToggleDarkMode}>
