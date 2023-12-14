@@ -26,10 +26,10 @@ function TarjetaPalabra(props) {
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`data:image/jpeg;base64,${props.imagen}`} />
       <Card.Body>
-        <Card.Title>{handlerCambiarIdiomaFrase  ()}</Card.Title>
+        <Card.Title>{handlerCambiarIdiomaFrase()}</Card.Title>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        {props.diccionaryWordModels.map((palabra, index) => (
+        {props.diccionaryWordModels && props.diccionaryWordModels.map((palabra, index) => (
           <ListGroup.Item key={index}>
             {idioma === "español" && palabra.word.spanish_w}
             {idioma === "ingles" && palabra.word.english_w}
