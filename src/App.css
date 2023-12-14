@@ -1,24 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap');
 
+.contenido-principal-1 {
+  height: 100vh;
+}
+
 .contenedor-principal {
   opacity: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   transition: opacity 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
 }
 
 .contenedor-principal.visible {
   opacity: 1;
-}
-
-.contenido-principal {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .contenedor-titulo {
@@ -26,7 +23,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 20px;
+  margin-bottom: 10px;
+  padding-top: 60px;
 }
 
 .contenedor-titulo h1 {
@@ -57,4 +55,9 @@
   max-height: 1000px;
   opacity: 1;
   overflow: visible;
+}
+
+.dark-theme {
+  background-color: #212529;
+  color: #fff;
 }

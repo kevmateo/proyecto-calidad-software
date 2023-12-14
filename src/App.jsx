@@ -3,6 +3,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import TarjetaPalabra from './componentes/tarjeta-palabra';
 import LoadingPage from './componentes/loading-page';
 import { useState, useEffect, Suspense } from 'react';
+import NavBar from './componentes/navbar.jsx';
 
 function App() {
 
@@ -13,6 +14,8 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [ultimoResultado, setUltimoResultado] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+
   useEffect(() => {
     if (palabrasAuxiliares.length > 0) {
       setUltimoResultado(palabrasAuxiliares);
@@ -88,16 +91,26 @@ function App() {
     }, 1600);
   };
 
-  return (
-    <div className='contenido-principal'>
-      {isLoading && <LoadingPage handleAnimationEnd={handleAnimationEnd} />}
+  const handlerToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    const body = document.body;
+    if (darkMode) {
+      body.classList.remove('dark-theme');
+    } else {
+      body.classList.add('dark-theme');
+    }
+  }
 
+  return (
+    <div className='contenido-principal-1'>
+      {isLoading && <LoadingPage handleAnimationEnd={handleAnimationEnd} />}
       {!isLoading && (
         <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
+          <NavBar darkMode={darkMode} toggleDarkMode={handlerToggleDarkMode}/>
           <div className='contenedor-titulo'>
-            <h1>AsanaQuest</h1>
+            <h1>Innovatech Solutions</h1>
             <InputGroup className="input-gruop">
-              <Form.Control
+              <Form.Control data-bs-theme={darkMode ? 'dark' : 'light'}
                 placeholder="Escriba para empezar..."
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
@@ -107,12 +120,12 @@ function App() {
               />
             </InputGroup>
             <Suspense fallback={<h2>Buscando...</h2>}>
-              
+
             </Suspense>
           </div>
           <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
             {ultimoResultado.map((palabra, index) => (
-              <TarjetaPalabra
+              <TarjetaPalabra darkMode={darkMode}
                 key={index}
                 id_palabra={palabra.id_palabra}
                 sansckrit={palabra.sansckrit}
