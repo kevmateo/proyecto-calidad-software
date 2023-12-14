@@ -105,38 +105,44 @@ function App() {
     <div className='contenido-principal-1'>
       {isLoading && <LoadingPage handleAnimationEnd={handleAnimationEnd} />}
       {!isLoading && (
-        <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
-          <NavBar darkMode={darkMode} toggleDarkMode={handlerToggleDarkMode}/>
-          <div className='contenedor-titulo'>
-            <h1>Innovatech Solutions</h1>
-            <InputGroup className="input-gruop">
-              <Form.Control data-bs-theme={darkMode ? 'dark' : 'light'}
-                placeholder="Escriba para empezar..."
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-                value={filtroNombre}
-                onChange={handlerBuscarPalabras}
-                onFocus={handleInputFocus}
-              />
-            </InputGroup>
-            <Suspense fallback={<h2>Buscando...</h2>}>
+        <>
+          <NavBar id="nav-bar"darkMode={darkMode} toggleDarkMode={handlerToggleDarkMode} />
+          <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
 
-            </Suspense>
+            <div className='contenedor-titulo'>
+              <h1>Innovatech Solutions</h1>
+              <InputGroup className="input-gruop">
+                <Form.Control data-bs-theme={darkMode ? 'dark' : 'light'}
+                  placeholder="Escriba para empezar..."
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                  value={filtroNombre}
+                  onChange={handlerBuscarPalabras}
+                  onFocus={handleInputFocus}
+                />
+              </InputGroup>
+              <Suspense fallback={<h2>Buscando...</h2>}>
+
+              </Suspense>
+            </div>
+            <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
+              {ultimoResultado.map((palabra, index) => (
+                <TarjetaPalabra darkMode={darkMode}
+                  key={index}
+                  id_palabra={palabra.id_palabra}
+                  sansckrit={palabra.sansckrit}
+                  english={palabra.english}
+                  spanish={palabra.spanish}
+                  diccionaryWordModels={palabra.diccionaryWordModels}
+                  imagen={palabra.imagen || ""}
+                />
+              ))}
+            </div>
+
           </div>
-          <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
-            {ultimoResultado.map((palabra, index) => (
-              <TarjetaPalabra darkMode={darkMode}
-                key={index}
-                id_palabra={palabra.id_palabra}
-                sansckrit={palabra.sansckrit}
-                english={palabra.english}
-                spanish={palabra.spanish}
-                diccionaryWordModels={palabra.diccionaryWordModels}
-                imagen={palabra.imagen || ""}
-              />
-            ))}
-          </div>
-        </div>
+        </>
+
+
       )}
     </div>
   );

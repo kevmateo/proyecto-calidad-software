@@ -20,7 +20,7 @@ function NavBar(props) {
   }
 
   return (
-    <Navbar collapseOnSelect className="bg-body-tertiary" data-bs-theme={ props.darkMode ? 'dark' : 'light'} style={{ position: 'fixed', width: '100%', zIndex: '1000' }} >
+    <Navbar collapseOnSelect id={props.id} className="bg-body-tertiary" data-bs-theme={props.darkMode ? 'dark' : 'light'} style={{ position: 'fixed', width: '100%', zIndex: '1000' }} >
       <Container >
         <Navbar.Brand>Calidad de Software</Navbar.Brand>
         <Nav>
