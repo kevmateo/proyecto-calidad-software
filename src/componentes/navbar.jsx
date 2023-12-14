@@ -6,6 +6,7 @@ import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
+import { AiFillFire } from "react-icons/ai";
 
 function NavBar(props) {
 
@@ -20,9 +21,9 @@ function NavBar(props) {
   }
 
   return (
-    <Navbar collapseOnSelect className="bg-body-tertiary" data-bs-theme={ props.darkMode ? 'dark' : 'light'} style={{ position: 'fixed', width: '100%', zIndex: '1000' }} >
+    <Navbar collapseOnSelect className="bg-body-tertiary" data-bs-theme={ props.darkMode ? 'dark' : 'light'} style={{ position: 'fixed', width: '100%', zIndex: '1000', backgroundColor:'#212529' }} >
       <Container >
-        <Navbar.Brand>Calidad de Software</Navbar.Brand>
+        <Navbar.Brand style={{fontFamily: 'Berkshire Swash, cursive'}} ><AiFillFire size={40} />Sanscrit Diccionary</Navbar.Brand>
         <Nav>
           <Nav.Link href="https://github.com/kevmateo/proyecto-calidad-software" target='_blank' rel='noopener noreferrer'>
             <FaGithub size={24} />
