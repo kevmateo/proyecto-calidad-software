@@ -4,6 +4,7 @@ import TarjetaPalabra from './componentes/tarjeta-palabra';
 import LoadingPage from './componentes/loading-page';
 import { useState, useEffect, Suspense } from 'react';
 import NavBar from './componentes/navbar.jsx';
+import { CgDanger } from "react-icons/cg";
 
 function App() {
 
@@ -74,7 +75,7 @@ function App() {
   const handlerBuscarPalabras = (e) => {
     const texto = e.target.value;
     setFiltroNombre(texto);
-    const palabrasFiltradas = palabras.filter((palabra) => palabra.sansckrit.toLowerCase().includes(texto.toLowerCase()) || palabra.english.toLowerCase().includes(texto.toLowerCase()) || palabra.spanish.toLowerCase().includes(texto.toLowerCase()));
+    const palabrasFiltradas = palabras.filter((palabra) => palabra.sansckrit.toLowerCase().includes(texto.toLowerCase()) || palabra.english.toLowerCase().includes(texto.toLowerCase()) || palabra.spanish.toLowerCase().includes(texto.toLowerCase()) || palabra.diccionaryWordModels.some((palabra) => palabra.word.spanish_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.english_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.sans_word.toLowerCase().includes(texto.toLowerCase())) );
     setPalabrasAuxiliares(palabrasFiltradas);
   }
   const handleInputFocus = () => {
@@ -105,38 +106,44 @@ function App() {
     <div className='contenido-principal-1'>
       {isLoading && <LoadingPage handleAnimationEnd={handleAnimationEnd} />}
       {!isLoading && (
-        <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
-          <NavBar darkMode={darkMode} toggleDarkMode={handlerToggleDarkMode}/>
-          <div className='contenedor-titulo'>
-            <h1>Innovatech Solutions</h1>
-            <InputGroup className="input-gruop">
-              <Form.Control data-bs-theme={darkMode ? 'dark' : 'light'}
-                placeholder="Escriba para empezar..."
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-                value={filtroNombre}
-                onChange={handlerBuscarPalabras}
-                onFocus={handleInputFocus}
-              />
-            </InputGroup>
+        <>
+          <NavBar id="nav-bar" darkMode={darkMode} toggleDarkMode={handlerToggleDarkMode} />
+          <div className={`contenedor-principal ${isVisible ? 'visible' : ''}`}>
+            <div className='contenedor-titulo'>
+              <h1>SansGoogle</h1>
+              <InputGroup className="input-gruop">
+                <Form.Control data-bs-theme={darkMode ? 'dark' : 'light'}
+                  placeholder="Escriba para empezar..."
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                  value={filtroNombre}
+                  onChange={handlerBuscarPalabras}
+                  onFocus={handleInputFocus}
+                />
+              </InputGroup>
+            </div>
             <Suspense fallback={<h2>Buscando...</h2>}>
-
+              <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
+                {ultimoResultado.map((palabra, index) => (
+                  <TarjetaPalabra darkMode={darkMode}
+                    key={index}
+                    id_palabra={palabra.id_palabra}
+                    sansckrit={palabra.sansckrit}
+                    english={palabra.english}
+                    spanish={palabra.spanish}
+                    diccionaryWordModels={palabra.diccionaryWordModels}
+                    imagen={palabra.imagen || ""}
+                  />
+                ))}
+              </div>
             </Suspense>
+            {isSearching && palabrasAuxiliares.length === 0 && (
+              <div className="contenedor-sin-resultados">
+                <p ><CgDanger size={20}/> No se encontraron resultados</p>
+              </div>
+            )}
           </div>
-          <div className={`contenedor-tarjetas ${(isSearching && palabrasAuxiliares.length > 0) ? 'visible' : ''}`}>
-            {ultimoResultado.map((palabra, index) => (
-              <TarjetaPalabra darkMode={darkMode}
-                key={index}
-                id_palabra={palabra.id_palabra}
-                sansckrit={palabra.sansckrit}
-                english={palabra.english}
-                spanish={palabra.spanish}
-                diccionaryWordModels={palabra.diccionaryWordModels}
-                imagen={palabra.imagen || ""}
-              />
-            ))}
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

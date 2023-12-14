@@ -5,8 +5,15 @@
   height: 100vh;
 }
 
+#nav-bar {
+  background-color: aqua;
+  justify-self: left;
+  align-self: left;
+}
+
 .contenedor-principal {
   opacity: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -14,6 +21,7 @@
   width: 100%;
   height: 100%;
 }
+
 
 .contenedor-principal.visible {
   opacity: 1;
@@ -25,7 +33,7 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 10px;
-  padding-top: 60px;
+  margin-top: 90px;
 }
 
 .contenedor-titulo h1 {
@@ -48,17 +56,22 @@
   flex-wrap: wrap;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
+  height: 75%;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .contenedor-tarjetas.visible {
   max-height: 1000px;
   opacity: 1;
-  overflow: visible;
 }
 
 .dark-theme {
   background-color: #212529;
   color: #fff;
+}
+
+.contenedor-sin-resultados {
+  color: rgb(255, 5, 5);
+  font-family: 'Courier New', Courier, monospace;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
