@@ -25,7 +25,7 @@ function TarjetaPalabra(props) {
 
   return (
     <Card data-bs-theme={props.darkMode ? 'dark' : 'light'} style={{ width: '18rem', height: '550px' }}>
-      <Card.Img variant="top" src={`data:image/jpeg;base64,${props.imagen}`} style={{ height: '200px' }} />
+      <Card.Img variant="top" src={`https://s3-calidad-software.s3.us-east-2.amazonaws.com/calidad/Proyecto/${props.id_palabra}.jpg`} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title >{handlerCambiarIdiomaFrase()}</Card.Title>
       </Card.Body>
