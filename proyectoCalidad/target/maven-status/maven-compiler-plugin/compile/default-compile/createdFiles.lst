@@ -1,0 +1,10 @@
+com\proyecto\proyectocalidad\Services\DiccionaryService.class
+com\proyecto\proyectocalidad\Models\DiccionaryModel.class
+com\proyecto\proyectocalidad\ProyectoCalidadApplication.class
+com\proyecto\proyectocalidad\Controllers\DiccionaryController.class
+com\proyecto\proyectocalidad\Models\WordModel.class
+com\proyecto\proyectocalidad\ServletInitializer.class
+com\proyecto\proyectocalidad\Models\DiccionaryWordModel$IdDiccionaryWord.class
+com\proyecto\proyectocalidad\Constantes\Rutas.class
+com\proyecto\proyectocalidad\Models\DiccionaryWordModel.class
+com\proyecto\proyectocalidad\Repositories\DiccionaryRepository.class
