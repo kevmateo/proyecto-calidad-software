@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.3",
+    "testcafe": "^3.5.0",
     "webpack": "^5.89.0"
   }
 }

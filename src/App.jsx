@@ -17,8 +17,12 @@ function App(props) {
   const [isVisible, setIsVisible] = useState(false);
   const [ultimoResultado, setUltimoResultado] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+
   useEffect(() => {
-    setIsLoading(false); // Cambia isLoading a false cuando el componente se monta
+    if (props.setIsLoading === false) {
+      setIsLoading(false); // Cambia isLoading a false cuando el componente se monta
+    }
+
   }, [props.setIsLoading]);
 
   useEffect(() => {
