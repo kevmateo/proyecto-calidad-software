@@ -36,7 +36,7 @@ function App() {
   }, [palabrasAuxiliares]);
 
   const handlerTraerPalabras = () => {
-    fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
+    fetch(`http://3.149.23.117/diccionary/imagenes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
