@@ -43,9 +43,9 @@ function App(props) {
     }
   }, [palabrasAuxiliares]);
 
-  /*
+  
   const handlerTraerPalabras = () => {
-    fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
+    fetch(`http://3.149.23.117/diccionary/imagenes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -67,12 +67,7 @@ function App(props) {
       .catch((error) => {
         console.log("Error de red: " + error);
       });
-  }
-*/
-  const handlerTraerPalabras = () => {
-    setPalabras(datos_quemados);
-    setPalabrasAuxiliares(datos_quemados);
-  }
+  };
 
   useEffect(() => {
     // const imagenesGuardadas = localStorage.getItem("imagen");
@@ -89,9 +84,35 @@ function App(props) {
   const handlerBuscarPalabras = (e) => {
     const texto = e.target.value;
     setFiltroNombre(texto);
-    const palabrasFiltradas = palabras.filter((palabra) => palabra.sansckrit.toLowerCase().includes(texto.toLowerCase()) || palabra.english.toLowerCase().includes(texto.toLowerCase()) || palabra.spanish.toLowerCase().includes(texto.toLowerCase()) || palabra.diccionaryWordModels.some((palabra) => palabra.word.spanish_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.english_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.sans_word.toLowerCase().includes(texto.toLowerCase())));
+    const cleanText = texto.trim();
+  
+    const palabrasFiltradas = palabras.filter((p) => {
+      const filterBySansckrit =
+        p.sansckrit && p.sansckrit.toLowerCase().includes(cleanText.toLowerCase());
+      const filterByEnglish =
+        p.english && p.english.toLowerCase().includes(cleanText.toLowerCase());
+      const filterBySpanish =
+        p.spanish && p.spanish.toLowerCase().includes(cleanText.toLowerCase());
+  
+      const filterByWordModels = p.diccionaryWordModels.some((wp) => {
+        const spanishWord =
+          wp.word.spanish_w &&
+          wp.word.spanish_w.toLowerCase().includes(cleanText.toLowerCase());
+        const englishWord =
+          wp.word.english_w &&
+          wp.word.english_w.toLowerCase().includes(cleanText.toLowerCase());
+        const sansWord =
+          wp.word.sans_word &&
+          wp.word.sans_word.toLowerCase().includes(cleanText.toLowerCase());
+        return spanishWord || englishWord || sansWord;
+      });
+      return (
+        filterBySansckrit || filterByEnglish || filterBySpanish || filterByWordModels
+      );
+    });
     setPalabrasAuxiliares(palabrasFiltradas);
-  }
+  };
+
   const handleInputFocus = () => {
     setIsSearching(true);
   };
@@ -141,19 +162,19 @@ function App(props) {
                 {ultimoResultado.map((palabra, index) => (
                   <TarjetaPalabra darkMode={darkMode}
                     key={index}
-                    id_palabra={palabra.id_palabra}
+                    id_s={palabra.id_s}
                     sansckrit={palabra.sansckrit}
                     english={palabra.english}
                     spanish={palabra.spanish}
                     diccionaryWordModels={palabra.diccionaryWordModels}
-                    imagen={palabra.imagen || ""}
+                    link={palabra.link}
                   />
                 ))}
               </div>
             </Suspense>
             {isSearching && palabrasAuxiliares.length === 0 && (
               <div className="contenedor-sin-resultados">
-                <p ><CgDanger size={20} /> No se encontraron resultados</p>
+                <p ><CgDanger size={20}/> No se encontraron resultados</p>
               </div>
             )}
           </div>

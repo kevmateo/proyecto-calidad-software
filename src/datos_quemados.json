@@ -4,6 +4,7 @@
         "sansckrit": "Tadasana",
         "spanish": "Postura de la Montaña",
         "english": "Mountain Pose",
+        "imagen": "./imagenes/prueba1-PE.jpg",
         "diccionaryWordModels": [
             {
                 "id_diccionary_word": {
@@ -39,11 +40,11 @@
         "diccionaryWordModels": [
             {
                 "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 1
+                    "id_s": 2,
+                    "id_w": 2
                 },
                 "word": {
-                    "id": 1,
+                    "id": 2,
                     "sans_word": "Kevin",
                     "spanish_w": "Kevin",
                     "english_w": "Kevin"
@@ -51,11 +52,11 @@
             },
             {
                 "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 25
+                    "id_s": 2,
+                    "id_w": 26
                 },
                 "word": {
-                    "id": 25,
+                    "id": 26,
                     "sans_word": "Tonto",
                     "spanish_w": "Tonto",
                     "english_w": "Tonto"
@@ -64,97 +65,33 @@
         ]
     },
     {
-        "id_palabra": 2,
-        "sansckrit": "Tadasana",
-        "spanish": "Postura de la Montaña",
-        "english": "Mountain Pose",
+        "id_palabra": 3,
+        "sansckrit": "Otra Palabra",
+        "spanish": "Otra traducción en español",
+        "english": "Another translation in English",
         "diccionaryWordModels": [
             {
                 "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 1
+                    "id_s": 3,
+                    "id_w": 3
                 },
                 "word": {
-                    "id": 1,
-                    "sans_word": "Asana",
-                    "spanish_w": "postura",
-                    "english_w": "pose"
+                    "id": 3,
+                    "sans_word": "Sanscrito",
+                    "spanish_w": "Sánscrito",
+                    "english_w": "Sanskrit"
                 }
             },
             {
                 "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 25
+                    "id_s": 3,
+                    "id_w": 27
                 },
                 "word": {
-                    "id": 25,
-                    "sans_word": "Tad",
-                    "spanish_w": "montaña",
-                    "english_w": "mountain"
-                }
-            }
-        ]
-    },
-    {
-        "id_palabra": 2,
-        "sansckrit": "Tadasana",
-        "spanish": "Postura de la Montaña",
-        "english": "Mountain Pose",
-        "diccionaryWordModels": [
-            {
-                "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 1
-                },
-                "word": {
-                    "id": 1,
-                    "sans_word": "Asana",
-                    "spanish_w": "postura",
-                    "english_w": "pose"
-                }
-            },
-            {
-                "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 25
-                },
-                "word": {
-                    "id": 25,
-                    "sans_word": "Tad",
-                    "spanish_w": "montaña",
-                    "english_w": "mountain"
-                }
-            }
-        ]
-    },
-    {
-        "id_palabra": 2,
-        "sansckrit": "Tadasana",
-        "spanish": "Postura de la Montaña",
-        "english": "Mountain Pose",
-        "diccionaryWordModels": [
-            {
-                "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 1
-                },
-                "word": {
-                    "id": 1,
-                    "sans_word": "Asana",
-                    "spanish_w": "postura",
-                    "english_w": "pose"
-                }
-            },
-            {
-                "id_diccionary_word": {
-                    "id_s": 1,
-                    "id_w": 25
-                },
-                "word": {
-                    "id": 25,
-                    "sans_word": "Tad",
-                    "spanish_w": "montaña",
-                    "english_w": "mountain"
+                    "id": 27,
+                    "sans_word": "Traducción",
+                    "spanish_w": "Traducción",
+                    "english_w": "Translation"
                 }
             }
         ]
