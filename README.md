@@ -69,7 +69,7 @@ Jairo Simba - Analista de negocio
 ## Imagenes
 Las imagenes son llamadas desde la nube, aqui ejemplos de como llamarlas.
 Si se las colca dentro de las cartas de donde se muestra en la pagina web se las llama de la siguiente manera:
-<Card.Img variant="top" src={https://s3-calidad-software.s3.us-east-2.amazonaws.com/calidad/Proyecto/${props.id_palabra}.jpg} style={{ height: '200px' }} /> asi jaja
+<Card.Img variant="top" src={https://s3-calidad-software.s3.us-east-2.amazonaws.com/calidad/Proyecto/${props.id_palabra}.jpg} style={{ height: '200px' }} />
 
 Otro ejemplo de como llamar a una imagen desde la nube: 
 Es el apartado de la nube(s3-calidad-software.s3.us-east-2.amazonaws.com)
