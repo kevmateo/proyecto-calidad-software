@@ -7,11 +7,13 @@ Object {
     <div>
       <div
         class="card"
-        style="width: 18rem;"
+        data-bs-theme="light"
+        style="width: 18rem; height: 550px;"
       >
         <img
           class="card-img-top"
           src="data:image/jpeg;base64,undefined"
+          style="height: 200px;"
         />
         <div
           class="card-body"
@@ -51,11 +53,13 @@ Object {
   "container": <div>
     <div
       class="card"
-      style="width: 18rem;"
+      data-bs-theme="light"
+      style="width: 18rem; height: 550px;"
     >
       <img
         class="card-img-top"
         src="data:image/jpeg;base64,undefined"
+        style="height: 200px;"
       />
       <div
         class="card-body"
@@ -152,11 +156,13 @@ Object {
     <div>
       <div
         class="card"
-        style="width: 18rem;"
+        data-bs-theme="light"
+        style="width: 18rem; height: 550px;"
       >
         <img
           class="card-img-top"
           src="data:image/jpeg;base64,undefined"
+          style="height: 200px;"
         />
         <div
           class="card-body"
@@ -196,11 +202,13 @@ Object {
   "container": <div>
     <div
       class="card"
-      style="width: 18rem;"
+      data-bs-theme="light"
+      style="width: 18rem; height: 550px;"
     >
       <img
         class="card-img-top"
         src="data:image/jpeg;base64,undefined"
+        style="height: 200px;"
       />
       <div
         class="card-body"

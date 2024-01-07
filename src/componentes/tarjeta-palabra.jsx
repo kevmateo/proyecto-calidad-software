@@ -4,10 +4,12 @@ import Card from 'react-bootstrap/Card';
 import { ListGroup, Button } from "react-bootstrap";
 import { useState } from "react";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import Youtube from "react-youtube";
 
 function TarjetaPalabra(props) {
 
   const [idioma, setIdioma] = useState("sanscrito");
+  const [showVideo, setShowVideo] = useState(false);
 
   const handlerCambiarIdioma = (nuevoIdioma) => {
     setIdioma(nuevoIdioma);
@@ -23,9 +25,36 @@ function TarjetaPalabra(props) {
     }
   }
 
+  const videoOpts = {
+    height: '200',
+    width: '100%',
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  const onShowVideo = () => {
+    setShowVideo(true);
+  };
+
   return (
     <Card data-bs-theme={props.darkMode ? 'dark' : 'light'} style={{ width: '18rem', height: '550px' }}>
-      <Card.Img variant="top" src={`data:image/jpeg;base64,${props.imagen}`} style={{ height: '200px' }} />
+      <div
+        onMouseEnter={onShowVideo}
+        onMouseLeave={() => setShowVideo(false)}
+        style={{ position: 'relative' }} 
+      >
+        <Card.Img
+          variant="top"
+          src={`https://s3-calidad-software.s3.us-east-2.amazonaws.com/calidad/Proyecto/${props.id_s}.jpg`}
+          style={{ height: '200px' }}
+        />
+        {showVideo && (
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
+            <Youtube videoId={props.link} opts={videoOpts} className="video"/>
+          </div>
+        )}
+      </div>
       <Card.Body>
         <Card.Title >{handlerCambiarIdiomaFrase()}</Card.Title>
       </Card.Body>
@@ -55,7 +84,6 @@ function TarjetaPalabra(props) {
         <Button variant="primary" className="boton-sanscrito" onClick={() => handlerCambiarIdioma("sanscrito")} >Sánscrito</Button>
         <Button variant="primary" className="boton-español" onClick={() => handlerCambiarIdioma("español")} >Español</Button>
         <Button variant="primary" className="boton-ingles" onClick={() => handlerCambiarIdioma("ingles")} >Inglés</Button>
-
       </Card.Body>
     </Card>
   );

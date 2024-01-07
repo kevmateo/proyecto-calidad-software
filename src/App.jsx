@@ -5,8 +5,9 @@ import LoadingPage from './componentes/loading-page';
 import { useState, useEffect, Suspense } from 'react';
 import NavBar from './componentes/navbar.jsx';
 import { CgDanger } from "react-icons/cg";
+import datos_quemados from './datos_quemados.json';
 
-function App() {
+function App(props) {
 
   const [palabras, setPalabras] = useState([]);
   const [palabrasAuxiliares, setPalabrasAuxiliares] = useState([]);
@@ -16,6 +17,13 @@ function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [ultimoResultado, setUltimoResultado] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (props.setIsLoading === false) {
+      setIsLoading(false); // Cambia isLoading a false cuando el componente se monta
+    }
+
+  }, [props.setIsLoading]);
 
   useEffect(() => {
     if (palabrasAuxiliares.length > 0) {
@@ -35,8 +43,9 @@ function App() {
     }
   }, [palabrasAuxiliares]);
 
+  
   const handlerTraerPalabras = () => {
-    fetch(`${process.env.REACT_APP_CALIDAD_SOFTWARE_API_PATH_BASE}diccionary/imagenes`, {
+    fetch(`http://3.149.23.117/diccionary/imagenes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +67,7 @@ function App() {
       .catch((error) => {
         console.log("Error de red: " + error);
       });
-  }
+  };
 
   useEffect(() => {
     // const imagenesGuardadas = localStorage.getItem("imagen");
@@ -75,9 +84,35 @@ function App() {
   const handlerBuscarPalabras = (e) => {
     const texto = e.target.value;
     setFiltroNombre(texto);
-    const palabrasFiltradas = palabras.filter((palabra) => palabra.sansckrit.toLowerCase().includes(texto.toLowerCase()) || palabra.english.toLowerCase().includes(texto.toLowerCase()) || palabra.spanish.toLowerCase().includes(texto.toLowerCase()) || palabra.diccionaryWordModels.some((palabra) => palabra.word.spanish_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.english_w.toLowerCase().includes(texto.toLowerCase()) || palabra.word.sans_word.toLowerCase().includes(texto.toLowerCase())) );
+    const cleanText = texto.trim();
+  
+    const palabrasFiltradas = palabras.filter((p) => {
+      const filterBySansckrit =
+        p.sansckrit && p.sansckrit.toLowerCase().includes(cleanText.toLowerCase());
+      const filterByEnglish =
+        p.english && p.english.toLowerCase().includes(cleanText.toLowerCase());
+      const filterBySpanish =
+        p.spanish && p.spanish.toLowerCase().includes(cleanText.toLowerCase());
+  
+      const filterByWordModels = p.diccionaryWordModels.some((wp) => {
+        const spanishWord =
+          wp.word.spanish_w &&
+          wp.word.spanish_w.toLowerCase().includes(cleanText.toLowerCase());
+        const englishWord =
+          wp.word.english_w &&
+          wp.word.english_w.toLowerCase().includes(cleanText.toLowerCase());
+        const sansWord =
+          wp.word.sans_word &&
+          wp.word.sans_word.toLowerCase().includes(cleanText.toLowerCase());
+        return spanishWord || englishWord || sansWord;
+      });
+      return (
+        filterBySansckrit || filterByEnglish || filterBySpanish || filterByWordModels
+      );
+    });
     setPalabrasAuxiliares(palabrasFiltradas);
-  }
+  };
+
   const handleInputFocus = () => {
     setIsSearching(true);
   };
@@ -127,12 +162,12 @@ function App() {
                 {ultimoResultado.map((palabra, index) => (
                   <TarjetaPalabra darkMode={darkMode}
                     key={index}
-                    id_palabra={palabra.id_palabra}
+                    id_s={palabra.id_s}
                     sansckrit={palabra.sansckrit}
                     english={palabra.english}
                     spanish={palabra.spanish}
                     diccionaryWordModels={palabra.diccionaryWordModels}
-                    imagen={palabra.imagen || ""}
+                    link={palabra.link}
                   />
                 ))}
               </div>
