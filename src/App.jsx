@@ -5,8 +5,9 @@ import LoadingPage from './componentes/loading-page';
 import { useState, useEffect, Suspense } from 'react';
 import NavBar from './componentes/navbar.jsx';
 import { CgDanger } from "react-icons/cg";
+import datos_quemados from './datos_quemados.json';
 
-function App() {
+function App(props) {
 
   const [palabras, setPalabras] = useState([]);
   const [palabrasAuxiliares, setPalabrasAuxiliares] = useState([]);
@@ -16,6 +17,13 @@ function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [ultimoResultado, setUltimoResultado] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (props.setIsLoading === false) {
+      setIsLoading(false); // Cambia isLoading a false cuando el componente se monta
+    }
+
+  }, [props.setIsLoading]);
 
   useEffect(() => {
     if (palabrasAuxiliares.length > 0) {
@@ -35,6 +43,7 @@ function App() {
     }
   }, [palabrasAuxiliares]);
 
+  
   const handlerTraerPalabras = () => {
     fetch(`http://3.86.140.231/diccionary/imagenes`, {
       method: 'GET',
@@ -58,7 +67,7 @@ function App() {
       .catch((error) => {
         console.log("Error de red: " + error);
       });
-  }
+  };
 
   useEffect(() => {
     // const imagenesGuardadas = localStorage.getItem("imagen");
@@ -101,7 +110,6 @@ function App() {
         filterBySansckrit || filterByEnglish || filterBySpanish || filterByWordModels
       );
     });
-  
     setPalabrasAuxiliares(palabrasFiltradas);
   };
 
@@ -166,7 +174,7 @@ function App() {
             </Suspense>
             {isSearching && palabrasAuxiliares.length === 0 && (
               <div className="contenedor-sin-resultados">
-                <p ><CgDanger size={20} />  Parece que no hay resultados para tu búsqueda. Intenta con otra palabra clave.</p>
+                <p ><CgDanger size={20}/> No se encontraron resultados</p>
               </div>
             )}
           </div>
