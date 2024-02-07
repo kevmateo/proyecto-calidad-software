@@ -46,7 +46,7 @@ function TarjetaPalabra(props) {
       >
         <Card.Img
           variant="top"
-          src={`https://s3-calidad-software.s3.us-east-2.amazonaws.com/calidad/Proyecto/${props.id_s}.jpg`}
+          src={`https://calidadsoftware.s3.amazonaws.com/imagenes/${props.id_s}.jpg`}
           style={{ height: '200px' }}
         />
         {showVideo && (

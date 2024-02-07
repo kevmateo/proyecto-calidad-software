@@ -1,28 +1,36 @@
 package com.proyecto.proyectocalidad.Models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "DICCIONARY_WORD")
+
 public class DiccionaryWordModel {
 
     @EmbeddedId
     private IdDiccionaryWord id_diccionary_word;
 
+    public DiccionaryWordModel() {
+    }
+
+    public DiccionaryWordModel(WordModel word, DiccionaryModel diccionary) {
+        this.id_diccionary_word = new IdDiccionaryWord(diccionary.getId_s(),word.getId_w());
+        this.word = word;
+        this.diccionary = diccionary;
+    }
 
     @ManyToOne
+    @JoinColumn(name = "ID_W") // Modifica aquí
     @MapsId("id_w")
-    @JoinColumn(name = "ID_W")
-    @JsonIgnore
     private WordModel word;
 
     @ManyToOne
     @MapsId("id_s")
     @JoinColumn(name = "ID_S")
+    //@JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     private DiccionaryModel diccionary;
 
@@ -85,6 +93,7 @@ public class DiccionaryWordModel {
         }
 
         // Debes incluir getters y setters adecuados para estos campos
+
     }
 
 

@@ -1,5 +1,6 @@
 com\proyecto\proyectocalidad\Services\DiccionaryService.class
 com\proyecto\proyectocalidad\Models\DiccionaryModel.class
+com\proyecto\proyectocalidad\ProyectoCalidadApplication$1.class
 com\proyecto\proyectocalidad\ProyectoCalidadApplication.class
 com\proyecto\proyectocalidad\Controllers\DiccionaryController.class
 com\proyecto\proyectocalidad\Models\WordModel.class

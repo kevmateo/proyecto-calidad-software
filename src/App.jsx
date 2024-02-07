@@ -36,7 +36,7 @@ function App() {
   }, [palabrasAuxiliares]);
 
   const handlerTraerPalabras = () => {
-    fetch(`http://3.149.23.117/diccionary/imagenes`, {
+    fetch(`http://3.86.140.231/diccionary/imagenes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

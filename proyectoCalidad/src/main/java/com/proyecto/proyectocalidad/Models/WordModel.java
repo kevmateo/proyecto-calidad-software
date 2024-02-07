@@ -1,17 +1,21 @@
 package com.proyecto.proyectocalidad.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "WORD")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_w")
 public class WordModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false, name = "ID_W")
 
-    private Long id;
+    private Long id_w;
 
     @Column(name = "SANS_WORD")
     private String  sans_word;
@@ -21,17 +25,15 @@ public class WordModel {
     private String  english_w;
 
 
-    @OneToMany(mappedBy = "word", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DiccionaryWordModel> diccionaryWordModels;
 
 
 
-    public Long getId() {
-        return id;
+    public Long getId_w() {
+        return id_w;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_w(Long id_w) {
+        this.id_w = id_w;
     }
 
     public String getSans_word() {
@@ -58,11 +60,4 @@ public class WordModel {
         this.english_w = english_w;
     }
 
-    public List<DiccionaryWordModel> getDiccionaryWordModels() {
-        return diccionaryWordModels;
-    }
-
-    public void setDiccionaryWordModels(List<DiccionaryWordModel> diccionaryWordModels) {
-        this.diccionaryWordModels = diccionaryWordModels;
-    }
 }

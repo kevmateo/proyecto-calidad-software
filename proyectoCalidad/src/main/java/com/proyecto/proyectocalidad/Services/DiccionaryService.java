@@ -43,7 +43,7 @@ public class DiccionaryService {
 
         for (DiccionaryModel diccionaryModel : posiciones) {
             try {
-                byte[] imagenBytes = obtenerBytesImagen(diccionaryModel.getId());
+                byte[] imagenBytes = obtenerBytesImagen(diccionaryModel.getId_s());
                 String imagenBase64 = Base64.getEncoder().encodeToString(imagenBytes);
                 diccionaryModel.setImagen(imagenBase64);
             } catch (IOException e) {

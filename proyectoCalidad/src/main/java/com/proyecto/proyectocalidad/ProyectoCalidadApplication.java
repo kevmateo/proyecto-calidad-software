@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
@@ -23,7 +25,7 @@ public class ProyectoCalidadApplication {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
 
-        config.addAllowedOrigin("http://localhost:3000");
+        config.addAllowedOrigin("");
 
         config.addAllowedHeader("*");
         config.addAllowedMethod("OPTIONS");
@@ -35,4 +37,14 @@ public class ProyectoCalidadApplication {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }*/
+    @Bean
+    public WebMvcConfigurer corsConfigure(){
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowedHeaders("*");
+            }
+        };
+    }
+
 }
