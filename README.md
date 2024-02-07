@@ -13,30 +13,6 @@ Abre http://localhost:3000: http://localhost:3000 para verla en tu navegador.
 La página se recargará automáticamente cuando realices cambios.
 También puedes ver posibles errores de lint en la consola.
 
-### `npm test`
-
-Ejecuta el ejecutor de pruebas en modo interactivo.
-
-### `npm run build`
-
-Construye la aplicación para producción en la carpeta build.
-Agrupa React en modo producción y optimiza la construcción para obtener el mejor rendimiento.
-
-La construcción es minimizada y los nombres de los archivos incluyen hashes.
-
-### `npm run eject`
-
-**Nota: esta es una operación irreversible. Una vez que ejecutas `eject`, no puedes volver atrás.**
-
-Si no estás satisfecho con la herramienta de construcción y las opciones de configuración, puedes ejecutar eject en cualquier momento. Este comando eliminará la única dependencia de construcción de tu proyecto.
-
-En su lugar, copiará todos los archivos de configuración y las dependencias transitivas (webpack, Babel, ESLint, etc.) directamente en tu proyecto para que tengas control total sobre ellos. Todos los comandos, excepto eject, seguirán funcionando, pero apuntarán a los scripts copiados para que puedas modificarlos. En este punto, estarás por tu cuenta.
-
-No es necesario que uses eject nunca. El conjunto de características predefinidas es adecuado para despliegues pequeños y medianos, y no deberías sentirte obligado a usar esta función. Sin embargo, entendemos que esta herramienta no sería útil si no pudieras personalizarla cuando estés listo para ello.
-
-
-# Información adicional acerca del sistema
-
 ## SANS GOOGLE
 
 ### Descripción:
