@@ -23,14 +23,13 @@ public class DiccionaryWordModel {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ID_W") // Modifica aquí
+    @JoinColumn(name = "ID_W")
     @MapsId("id_w")
     private WordModel word;
 
     @ManyToOne
     @MapsId("id_s")
     @JoinColumn(name = "ID_S")
-    //@JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     private DiccionaryModel diccionary;
 
@@ -68,7 +67,7 @@ public class DiccionaryWordModel {
         private Long id_w;
 
         public IdDiccionaryWord() {
-            // Constructor predeterminado vacío requerido por Hibernate
+
         }
 
         public IdDiccionaryWord(Long id_s, Long id_w) {
@@ -92,7 +91,7 @@ public class DiccionaryWordModel {
             this.id_w = id_w;
         }
 
-        // Debes incluir getters y setters adecuados para estos campos
+
 
     }
 

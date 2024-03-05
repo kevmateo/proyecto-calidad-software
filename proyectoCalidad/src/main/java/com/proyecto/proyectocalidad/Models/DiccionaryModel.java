@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "DICCIONARY")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_s")
 public class DiccionaryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

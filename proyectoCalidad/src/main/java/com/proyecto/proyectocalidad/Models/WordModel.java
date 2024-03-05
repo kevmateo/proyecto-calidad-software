@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "WORD")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_w")
 public class WordModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

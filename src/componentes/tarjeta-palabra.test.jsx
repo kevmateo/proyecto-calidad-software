@@ -93,14 +93,11 @@ describe('TarjetaPalabra Component', () => {
   test('debería mostrar la palabra en el idioma seleccionado', () => {
     render(<TarjetaPalabra {...palabra} />);
 
-    // Initial word should be in Sanskrit
     expect(screen.getByText('Tadasana')).toBeInTheDocument();
 
-    // Change language to Spanish
     fireEvent.click(screen.getByText('Español'));
     expect(screen.getByText('Postura de la Montaña')).toBeInTheDocument();
 
-    // Change language to English
     fireEvent.click(screen.getByText('Inglés'));
     expect(screen.getByText('Mountain Pose')).toBeInTheDocument();
   });
@@ -108,17 +105,13 @@ describe('TarjetaPalabra Component', () => {
   test('debería mostrar la descomposición morfológica con la palabra', () => {
     render(<TarjetaPalabra {...palabra} />);
 
-    // Suponiendo que la descomposición morfológica sigue la palabra en cada idioma
-    // Verificar la visualización de la descomposición morfológica en sánscrito
     expect(screen.getByText('Asana')).toBeInTheDocument();
     expect(screen.getByText('Tad')).toBeInTheDocument();
 
-    // Cambiar al idioma español y verificar la descomposición morfológica
     fireEvent.click(screen.getByText('Español'));
     expect(screen.getByText('postura')).toBeInTheDocument();
     expect(screen.getByText('montaña')).toBeInTheDocument();
 
-    // Cambiar al idioma inglés y verificar la descomposición morfológica
     fireEvent.click(screen.getByText('Inglés'));
     expect(screen.getByText('pose')).toBeInTheDocument();
     expect(screen.getByText('mountain')).toBeInTheDocument();
@@ -154,17 +147,14 @@ test('Renderiza la tarjeta con la palabra y sus traducciones en diferentes idiom
     diccionaryWordModels={palabra.diccionaryWordModels}
   />);
 
-  // Verifica que se muestre la palabra en sánscrito al inicio
   const sansckritWordElement = screen.getByText('Tadasana');
   expect(sansckritWordElement).toBeInTheDocument();
 
-  // Verifica que al cambiar el idioma a español, se muestre la palabra en español
   const buttonEspanol = screen.getByText('Español');
   fireEvent.click(buttonEspanol);
   const spanishWordElement = screen.getByText('Postura de la Montaña');
   expect(spanishWordElement).toBeInTheDocument();
 
-  // Verifica que al cambiar el idioma a inglés, se muestre la palabra en inglés
   const buttonIngles = screen.getByText('Inglés');
   fireEvent.click(buttonIngles);
   const englishWordElement = screen.getByText('Mountain Pose');
@@ -174,18 +164,16 @@ test('Renderiza la tarjeta con la palabra y sus traducciones en diferentes idiom
 test('La traducción de las palabras cambia según el idioma seleccionado en menos de 3 segundos', async () => {
   render(<TarjetaPalabra {...palabra} />);
 
-  // Verifica que se muestren las palabras en sánscrito inicialmente
   expect(screen.getByText('Tadasana')).toBeInTheDocument();
   expect(screen.getByText('Asana')).toBeInTheDocument();
 
-  // Simula el cambio al español y verifica la traducción dentro del límite de tiempo de 3 segundos
   fireEvent.click(screen.getByText('Español'));
   await waitFor(() => {
     expect(screen.getByText('Postura de la Montaña')).toBeInTheDocument();
     expect(screen.getByText('postura')).toBeInTheDocument();
   }, { timeout: 3000 });
 
-  // Simula el cambio al inglés y verifica la traducción dentro del límite de tiempo de 3 segundos
+
   fireEvent.click(screen.getByText('Inglés'));
   await waitFor(() => {
     expect(screen.getByText('Mountain Pose')).toBeInTheDocument();
@@ -195,14 +183,12 @@ test('La traducción de las palabras cambia según el idioma seleccionado en men
 
 fixture`App Navegadores Compatibles`.page`http://localhost:3000`;
 test('Verificar compatibilidad con distintos navegadores', async (t) => {
-  // Verifica que la aplicación se cargue correctamente
+
   await t.expect(Selector('h1').innerText).eql('SansGoogle');
 
-  // Verifica la visibilidad de algunos elementos importantes
   await t.expect(Selector('.input-gruop').visible).ok();
   await t.expect(Selector('.contenedor-tarjetas').visible).ok();
 
-  // Verifica la compatibilidad con Chrome
   await t
     .useRole(chromeUser)
     .expect(Selector('h1').innerText)
@@ -212,7 +198,6 @@ test('Verificar compatibilidad con distintos navegadores', async (t) => {
     .expect(Selector('.contenedor-tarjetas').visible)
     .ok();
 
-  // Verifica la compatibilidad con Firefox
   await t
     .useRole(firefoxUser)
     .expect(Selector('h1').innerText)
@@ -222,5 +207,4 @@ test('Verificar compatibilidad con distintos navegadores', async (t) => {
     .expect(Selector('.contenedor-tarjetas').visible)
     .ok();
 
-  // Verifica la compatibilidad con otros navegadores si es necesario
 });

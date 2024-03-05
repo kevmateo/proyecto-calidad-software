@@ -18,11 +18,8 @@
     color: #fff;
     max-width: fit-content;
     overflow: hidden;
-    /* Oculta el exceso de texto */
     border-right: 0.08em solid white;
-    /* Simula el cursor intermitente */
     white-space: nowrap;
-    /* Evita que las letras se rompan */
     margin: 0;
 
     animation: typing var(--tiempo-animacion-typing) steps(50, end) forwards, blink-caret 0.25s step-end infinite, invert-text-colors var(--tiempo-animacion-invertir) var(--tiempo-espera-animacion-invertir) forwards;

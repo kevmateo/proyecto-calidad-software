@@ -20,7 +20,7 @@ function App(props) {
 
   useEffect(() => {
     if (props.setIsLoading === false) {
-      setIsLoading(false); // Cambia isLoading a false cuando el componente se monta
+      setIsLoading(false); 
     }
 
   }, [props.setIsLoading]);
@@ -59,7 +59,6 @@ function App(props) {
         }
       })
       .then((data) => {
-        //localStorage.setItem("imagen", JSON.stringify(data));
         setPalabras(data);
         setPalabrasAuxiliares(data);
         console.log(data);
@@ -70,15 +69,7 @@ function App(props) {
   };
 
   useEffect(() => {
-    // const imagenesGuardadas = localStorage.getItem("imagen");
-    // if (imagenesGuardadas) {
-    //   const imagen = JSON.parse(imagenesGuardadas);
-    //   setPalabras(imagen);
-    //   setPalabrasAuxiliares(imagen);
-    //   console.log(imagen);
-    // } else {
     handlerTraerPalabras();
-    //}
   }, []);
 
   const handlerBuscarPalabras = (e) => {
