@@ -174,7 +174,11 @@ function App(props) {
             </Suspense>
             {isSearching && palabrasAuxiliares.length === 0 && (
               <div className="contenedor-sin-resultados">
-                <p ><CgDanger size={20}/> No se encontraron resultados</p>
+                {/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(filtroNombre) ? (
+                  <p><CgDanger size={20} /> No se permite el uso de caracteres especiales en la búsqueda.</p>
+                ) : (
+                  <p><CgDanger size={20} /> Parece que no hay resultados para tu búsqueda. Intenta con otra palabra clave.</p>
+                )}
               </div>
             )}
           </div>
