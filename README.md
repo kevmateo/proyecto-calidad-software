@@ -1,17 +1,3 @@
-# Configuración del proyecto con React
-
-
-## Scripts disponibles
-
-En el directorio del proyecto, puedes ejecutar los siguientes comandos:
-
-### `npm start`
-
-Ejecuta la aplicación en modo desarrollo.
-Abre http://localhost:3000: http://localhost:3000 para verla en tu navegador.
-
-La página se recargará automáticamente cuando realices cambios.
-También puedes ver posibles errores de lint en la consola.
 
 ## SANS GOOGLE
 
