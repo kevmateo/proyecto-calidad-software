@@ -27,6 +27,12 @@ Kenny Pinchao - Diseñador de software
 Edison Sánchez - Tester
 Jairo Simba - Analista de negocio
 
+### Calidad
+La versión 3 de nuestro proyecto ha representado un hito significativo en cuanto a la mejora de la calidad tanto del software como de la experiencia del usuario. Todo nuestro equipo de desarrollo colaboró activamente, aportando ideas innovadoras para mejorar el rendimiento y la usabilidad del programa.
+
+Durante el proceso, también nos enfrentamos a solicitudes de cambios que podrían haber impactado en la esencia del programa. Después de un análisis detenido y una discusión exhaustiva, tomamos la decisión conjunta de no implementar estos cambios, ya que consideramos que podrían comprometer la integridad y la identidad del software.
+
+Este enfoque riguroso nos ha permitido mantener un equilibrio entre la innovación y la fidelidad a la visión original del proyecto, garantizando así una experiencia de usuario excepcional y una calidad sobresaliente en nuestro producto final.
 
 ## Imagenes
 Las imagenes son llamadas desde la nube, aqui ejemplos de como llamarlas.
